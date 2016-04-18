@@ -1,3 +1,97 @@
-<h1>Hello World!</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>The Golden State Schooling Blues</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Custom -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- D3 Scripts -->
+  </head>
 
-<p>Some text here.</p>
+  <div class="row col-sm-8 col-sm-offset-2 main">
+
+        <h1>The Golden State Schooling Blues.</h1>
+
+        <h3>Are California Schools Really Behind?</h3>
+
+        <p>Each year 4th and 8th graders take the National Assessment of Educational Progress, or NAEP. The NAEP is ongoing assessment of what U.S. students know and can do in different subjects. California’s children tend to score relatively poorly on these tests.</p>
+
+    <div id="country-line"></div>
+
+        <p>The differences between California's children and children elsewhere in the ocuntry are statistically significant. Research has shown that children not reading at grade level by the end of third grade are at serious risk of never graduating from high school.</p>
+        <p>California’s children in poverty generally score behind those in other states, as do California’s Latino students. on average, about a third of California’s students do not finish high school. </p>
+        <p>Students that “drop out” are not random – they are disproportionately African American and Latino, and they disproportionately come from low-income families.</p>
+
+        <h3>Achievement Gaps: The Biggest Challenge</h3>
+
+    <div id="map2000"></div>
+    <div id="Map2013"></div>
+    <div id="third chart"></div> 
+
+        <p>Students who qualify for free or reduced-price lunch service (a common measure of poverty) tend to score lower than the kids who don’t. Race correlates, too: black and Latino students tend to score lower on standardized tests than white and Asian students.
+        </p>
+        <p>Students from low-income families, English learners, and African Americans continue to have lower average scores. </p>
+            
+        <h3>Diversity</h3>
+        
+        <p>Each student arrives at school with different challenges, advantages, resources, and distractions. A fundamental challenge of public education is to create conditions that maximize learning for each child, each year, regardless of where they start. California has the largest and most diverse student population in America. 
+        </p>
+
+        <h4>Half of California students are Hispanic</h4>
+
+    <div id="fourth chart"></div>   
+
+        <p>About half of California’s students are Latino. In about 30 years, the state’s K-12 schools added about 3 million Latino students, accounting for virtually all of the growth in California enrollment. Non-Latino white students make up about a quarter of the state student body. Most of the remaining students are Asian (9%), African-American (6%), or Filipino (3%). About 3% of California students associate themselves with none of the above. California’s large urban districts educate students from virtually every culture and linguistic background on the planet.</p>
+
+        <h3>Life After High School</h3>
+
+        <p>California has a long and well-respected history of providing its residents with affordable, lifelong access to postsecondary education. The largest and most visible investment has been a robust public system of colleges and universities.  With recent budget cuts, California’s road to and through college has become pocked with potholes. Whether by strategy or by circumstance, California’s education systems are overdue for some rethinking to allow its residence to enjoy postsecondary education.</p>
+
+    </div><!-- ./wrapper -->
+
+    <!-- Bootstrap 3.3.5 -->
+
+<script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="https://d3js.org/queue.v1.min.js"></script>
+<script src="js/d3-legend.min.js"></script>
+<script src="js/chroniton-only.js"></script>
+<script src="https://d3js.org/topojson.v1.min.js">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.9.0/d3-legend.js"></script>
+<script src="js/maps.js"></script>
+<script src="js/linechart.js"></script>
+<script type="text/javascript">
+
+
+queue()
+    .defer(d3.json, "data/geojson/us-states.json")
+    .defer(d3.csv, "data/CaliforniaData.csv")
+    .defer(d3.csv, "data/NAEP-AVG.csv")
+    //.defer(d3.csv, "data/cities-lived.csv")
+    .await(ready);
+       
+
+function ready(error, states, cities, linedata) {
+
+    if (error) { console.log(error); }
+
+    linechart(linedata);
+    makeMaps(states, cities);
+
+}
+
+
+
+</script>
+</body>
+</html>

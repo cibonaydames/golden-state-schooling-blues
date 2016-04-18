@@ -1,0 +1,110 @@
+/* On mouse hover, lighten state color */
+path {
+    stroke: gray;
+    stroke-width: 1;
+}
+
+circle {
+    fill: orange;
+    fill-opacity: .8;
+}
+
+/* Style for Custom Tooltip */
+div.tool-tip {
+    position: absolute;
+    text-align: center;
+    min-width: 100px;
+    height: 30px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: white;
+    border: 1px orange solid;
+    border-radius: 5px;
+    pointer-events: none;
+}
+
+.tool-tip p {
+    margin: 5px;
+}
+
+/* Legend Font Style */
+body {
+    font: 11px sans-serif;
+}
+
+/* Legend Position Style */
+.legend {
+    position:absolute;
+    left:800px;
+    top:350px;
+}
+
+
+h1 {
+    font-size: 24px;
+    text-align: center;
+}
+
+p {
+    font-size: 14px;
+    margin: 10px 0 0 0;
+}
+
+svg {
+    background-color: white;
+}
+
+circle {
+    fill: #55bada;
+}
+
+circle:hover {
+    fill: #bada55;
+    stroke: #bada55;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: black;
+    stroke-width: 1px;
+    shape-rendering: crispEdges;
+}
+
+.line {
+    fill: none;
+    stroke: #55bada;
+    stroke-width: 1px;
+    stroke-opacity: 80%;
+}
+
+.line-text {
+    font-size: 12px;
+}
+
+.line.unfocused{
+    stroke-opacity: 40%;
+}
+
+.line.focused {
+    stroke-width: 2px;
+    stroke-opacity: 100%;
+    stroke: #bada55;
+}
+
+.axis text {
+    font-family: sans-serif;
+    font-size: 11px;
+}
+
+.linetooltip {
+    position: absolute;
+    z-index: 10;
+}
+
+.linetooltip p {
+    background-color: white;
+    border: #bada55 1px solid;
+    padding: 3px;
+}
+
