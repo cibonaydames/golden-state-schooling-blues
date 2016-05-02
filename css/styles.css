@@ -1,3 +1,61 @@
+/*scroller*/
+
+
+#graphic {
+  padding-top: 60px;
+}
+
+p {
+  padding: 20px;
+}
+
+#sections {
+  position: relative;
+  display: inline-block;
+  width: 250px;
+  top: 0px;
+  z-index: 90;
+  padding-bottom: 20px;
+}
+
+
+.step {
+  margin-bottom: 200px;
+  font-family: "TiemposTextWeb-Regular","Georgia";
+  font-size: 16px;
+  line-height: 23px;
+  color: #767678;
+}
+
+#sections .title {
+  font-family: Arial,Helvetica,"san-serif";
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 2px;
+  color: #262626;
+  line-height: 1.2em;
+}
+
+#extra-space {
+  height: 300px;
+}
+
+#vis {
+  display: none;
+  position: fixed;
+  top: 60px;
+  z-index: 1;
+  margin-left: 0;
+  font-size: 10px;
+}
+
+#page_header {
+  position: relative;
+  margin: 20px;
+  z-index: 2;
+  width: 600px;
+}
+
 /* On mouse hover, lighten state color */
 path {
     stroke: gray;
@@ -8,6 +66,36 @@ circle {
     fill: orange;
     fill-opacity: .8;
 }
+
+/* Map Tooltip */
+.toolMtip {
+            position: absolute;
+            z-index: 10;
+            text-align: left;
+            width: 200px;
+            padding: 10px;
+            font-size: 10px;
+            font-family: Helvetica, sans-serif;
+            background: #ffffff;
+            pointer-events: none;
+            opacity: 0;
+            border: #ccc 1px solid;
+        }
+        .toolMtip h3 {
+          font-size: 14px; margin: 0 0 7px 0;
+          line-height: 1.2em;
+        }
+        .toolMtip .val{
+            float: right;
+            font-size: 20px;
+        }
+        .toolMtip .title{
+            float: left;
+        }
+        .toolMtip .desc{
+            float: left;
+            font-size: 8px;
+        }
 
 /* Style for Custom Tooltip */
 div.tool-tip {
@@ -21,6 +109,7 @@ div.tool-tip {
     border: 1px orange solid;
     border-radius: 5px;
     pointer-events: none;
+    z-index: 100;
 }
 
 .tool-tip p {
@@ -108,3 +197,111 @@ circle:hover {
     padding: 3px;
 }
 
+.CaliforniaLine {
+    stroke: red;  
+    stroke-opacity:1;
+    stroke-width:3px; 
+}
+
+/*BarChart*/
+
+.group-label {
+  font-weight: bold;
+  text-anchor: end;
+}
+
+form {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+/*Small Multiples*/
+
+#explain {
+  margin: 0 0 0 20px;
+}
+
+#explain h3{
+  font-size:1.5em;
+  margin:0 0 0.5em 0;
+  padding:0;
+}
+
+#explain p{
+  font-size:1.2em;
+  line-height:1.4em;
+  color:#717171;
+  margin-top:0;
+}
+
+#filters{
+  margin:0 24px 10px 16px;
+  float:right;
+}
+
+.area{
+  fill:#e2e2e2;
+  stroke: #888;
+  stroke-width: 0.5px;
+}
+
+.endpoint {
+  fill: steelblue;
+}
+
+#filters table{
+  border-collapse:collapse;
+  border-top:1px solid #ccc;
+}
+
+#filters table td{
+  padding:0;margin:0;
+}
+
+#filters a{
+  display:block;
+  padding:2px 4px;
+  font-size:1.1em;
+  color:#919292;
+  background:#F0F4F5;
+  cursor:pointer;
+  border-left:1px solid #CCCCCC;
+  border-bottom:1px solid #CCCCCC;
+  border-right:1px solid #CCCCCC;
+  overflow:hidden;
+}
+
+#filters a:hover{
+  text-decoration:underline;
+}
+#filters a.current{
+  background:#fff;color:#000;
+  font-weight:bold;
+}
+#filters a.current:hover{
+  text-decoration:none;
+}
+
+.left{
+  float:left;
+}
+
+.clr{
+  clear:both;
+}
+
+.label {
+  fill: black;
+  font-size: 1.1em;
+}
+
+
+.y.axis text, .axislabel {
+  font-size: .85em;
+  fill: #888;
+}
+
+text {
+font: 10px sans-serif;
+}

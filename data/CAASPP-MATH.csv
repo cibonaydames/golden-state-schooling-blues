@@ -1,8 +1,29 @@
-,exceeded,met,nearly_met,not_met
-All Students,14,19,29,38
-African American,4,12,27,56
-Latino,6,15,31,48
-White,22,27,28,23
-Asian,44,25,19,12
-English Learner,3,8,24,65
-Low Income,6,15,30,49
+group,Field,Value
+All Students,exceeded,14
+All Students,met,19
+All Students,nearly met,29
+All Students,not met,38
+African American,exceeded,4
+African American,met,12
+African American,nearly met,27
+African American,not met,56
+Latino,exceeded,6
+Latino,met,15
+Latino,nearly met,31
+Latino,not met,48
+White,exceeded,22
+White,met,27
+White,nearly met,28
+White,not met,23
+Asian,exceeded,44
+Asian,met,25
+Asian,nearly met,19
+Asian,not met,12
+English Learner,exceeded,3
+English Learner,met,8
+English Learner,nearly met,24
+English Learner,not met,65
+Low Income,exceeded,6
+Low Income,met,15
+Low Income,nearly met,30
+Low Income,not met,49

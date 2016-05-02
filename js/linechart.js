@@ -1,57 +1,14 @@
+d3.selection.prototype.moveToFront = function() {
+  return this.each(function(){
+    this.parentNode.appendChild(this);
+  });
+};
 
 function linechart(data) {
 
 
- 	var fullwidth = 700;
-            var fullheight = 600;
-            var margin = { top: 20, right: 100, bottom: 50, left: 100};
-
-
-            var width = fullwidth - margin.left - margin.right;
-            var height = fullheight - margin.top - margin.bottom;
-
-        //Set up date formatting and years
-            var dateFormat = d3.time.format("%Y");
-
-
-            var xScale = d3.time.scale()
-                                .range([ 0, width]);
-
-            var yScale = d3.scale.linear()
-                                .range([ height, 0]);
-
-
-        //Configure axis generators
-            var xAxis = d3.svg.axis()
-                            .scale(xScale)
-                            .orient("bottom")
-                            .ticks(15)
-                            .tickFormat(function(d) {
-                                return dateFormat(d);
-                            })
-                            .innerTickSize([5]);
-
-            var yAxis = d3.svg.axis()
-                            .scale(yScale)
-                            .orient("left")
-                            .innerTickSize([0]);
-
-        // add a tooltip to the page - not to the svg itself!
-            var linetooltip = d3.select("body")
-                .append("div")
-                .attr("class", "linetooltip");
-
-
-        //Create the empty SVG image
-            var svg = d3.select("#country-line")
-                        .append("svg")
-                        .attr("width", fullwidth)
-                        .attr("height", fullheight)
-                        .append("g")
-                        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-            var fullwidth = 700;
-            var fullheight = 600;
+ 	        var fullwidth = 700;
+            var fullheight = 400;
             var margin = { top: 20, right: 100, bottom: 50, left: 100};
 
 
@@ -84,6 +41,22 @@ function linechart(data) {
                             .orient("left")
                             .innerTickSize([0]);
 
+
+        // add a tooltip to the page - not to the svg itself!
+            var linetooltip = d3.select("body")
+                .append("div")
+                .attr("class", "linetooltip");
+
+
+        //Create the empty SVG image
+            var svg = d3.select("#country-line")
+                        .append("svg")
+                        .attr("width", fullwidth)
+                        .attr("height", fullheight)
+                        .append("g")
+                        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+            
 
 
         //Configure line generator
@@ -158,7 +131,7 @@ function linechart(data) {
                         }) - 5;
                     })
                 ]);
-            var color = "gray";
+            
             var groups = svg.selectAll("g.lines")
                     .data(dataset)
                     .enter()
@@ -172,12 +145,21 @@ function linechart(data) {
                     .enter()
                     .append("path")
                     .attr("class", "line")
-                    .attr("d", line);
-                    
+                    .attr("d", line)
+                    .classed("CaliforniaLine", function(d) { 
+                        if (d[0].state==="California"){
+                            console.log("true");
+                            return true;
+                        } else { 
+                        return false; 
+                        }
+                    });
+
 
             groups.append("text")
-                    .text(function(d) { if (d.state==="California") { 
-                        return d.state; 
+                    .text(function(d) { 
+                        if (d.state==="California") { 
+                            return d.state;
                         }
                     })
                     .attr("y", function(d) {
@@ -186,8 +168,15 @@ function linechart(data) {
                     })
                     .attr("x", xScale(dateFormat.parse("2013")))
                     .attr("class", "line-text")
-                    .attr("dy", "-5");
+                    .attr("dy", "-2")
+                    .attr("dx", "5");
 
+                
+            groups.transition()
+            .duration(1000)
+            .attr("d",line);
+
+    d3.select("g.hline#California").moveToFront();
 
             var circles = groups.selectAll("circle")
                                 .data(function(d) { return d.score;})
