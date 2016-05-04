@@ -9,6 +9,8 @@ var margin = {top: 30, right: 15, bottom: 20, left: 45},
 var parseDate = d3.time.format("%Y").parse;
 var outputDate = d3.time.format("%Y");
 
+var colorScale = d3.scale.category10();
+
 var x = d3.time.scale()
     .range([0, width]);
 
@@ -16,11 +18,17 @@ var y = d3.scale.linear()
     .range([height, 0]);
 
 var yAxis = d3.svg.axis()
-      .orient("left")
-      .ticks(2)
-      .outerTickSize(0)
-      .innerTickSize(0)
-      .tickFormat(d3.format("s"));
+  .scale(y)
+  .orient("left")
+  .ticks(3)
+  .outerTickSize(0)
+  .innerTickSize(0)
+  .tickFormat(d3.format("s"));
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom")
+    .ticks(5);
 
 var current = "Total";
 
@@ -57,8 +65,12 @@ var area = d3.svg.area()
   // We assume values are sorted by date.
   x.domain(d3.extent(data, function(s) { return parseDate(s.Year); }));
 
+  var etooltip = d3.select("body")
+          .append("div")
+          .attr("class", "areatooltip");
+
   // Add an SVG element for each country, with the desired dimensions and margin.
-  var svg = d3.select("div#enrollment").selectAll("svg")
+  var svg = d3.select("#enrollment").selectAll("svg")
       .data(counties)
     .enter().append("svg")
       .attr("width", width + margin.left + margin.right)
@@ -71,9 +83,13 @@ var area = d3.svg.area()
 
     var localsvg = d3.select(this);
 
-    var layers = stack(county);
+    var groups = d3.nest()
+      .key(function(d) {return d.Group;})
+      .entries(county.values);
 
-	 y.domain([0, d3.max(layers, function(d) {
+    var layerdata = stack(groups);
+
+	 y.domain([0, d3.max(layerdata, function(d) {
 	      return d3.max(d.values, function(j) {
 	            return j.y0 + j.y;
 	          });
@@ -81,20 +97,21 @@ var area = d3.svg.area()
 	  ]);
 
   var layers = localsvg.selectAll(".layer")
-      .data(layers, function(d) {return d.key;});
-    
-   
-  layers.enter().append("path")
-      .attr("class", "layer");
-      
+      .data(layerdata, function(d) {return d.key;});
+
+  layers
+    .enter()
+    .append("path")
+    .attr("class", "layer");
+
   layers.transition().duration(1000)
-    .attr("d", function(d) { return area(d.Group); })
+    .attr("d", function(d) { return area(d.values); })
     .style("fill", function(d, i) { return colorScale(i); });
 
    layers
     .on("mouseover", mouseoverFunc)
     .on("mousemove", mousemoveFunc)
-    .on("mouseout", mouseoutFunc);  
+    .on("mouseout", mouseoutFunc);
 
   layers.exit().remove();
 
@@ -109,13 +126,20 @@ var area = d3.svg.area()
       .text(function(d) { return d.key; });
 
 
-    localsvg.append("g").attr("class", "y axis").call(yAxis);
+    localsvg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis);
+    localsvg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
 
   } // end multiple
 
 // this function is applied to all the data values on load!
 
 function mouseoverFunc(d) {
+
   d3.selectAll("path.line").classed("unfocused", true);
     // now undo the unfocus on the current line and set to focused.
   d3.select(this).select("path.line").classed("unfocused", false).classed("focused", true);
@@ -124,26 +148,27 @@ function mouseoverFunc(d) {
     .transition()
     .style("opacity", 1)
     .attr("r", 4);
-  tooltip
+  etooltip
     .style("display", null) // this removes the display none setting from it
-    .html("<p>State: " + d.County + "</p>");
+    .html("<p>Group: " + d.key +
+      "<br>NAEP Score: " +d.Enrollment + " </p>");
   }
 
 
 function mouseoutFunc(d) {
   d3.selectAll("path.line").classed("unfocused", false).classed("focused", false);
-    tooltip.style("display", "none");
+    etooltip.style("display", "none");
 
   d3.select(this)
     .transition()
     .style("opacity", .75)
     .attr("r", 3);
-  tooltip.style("display", "none");  // this sets it to invisible!
+  etooltip.style("display", "none");  // this sets it to invisible!
 }
 
 
 function mousemoveFunc(d) {
-  tooltip
+  etooltip
     .style("top", (d3.event.pageY - 10) + "px" )
     .style("left", (d3.event.pageX + 10) + "px");
   }

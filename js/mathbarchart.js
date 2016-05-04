@@ -30,6 +30,10 @@ var stack = d3.layout.stack()
 
 var color = d3.scale.category10();
 
+var btooltip = d3.select("body")
+            .append("div")
+            .attr("class", "tool-tip");
+
 var svg = d3.select("#caasppchart").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -65,6 +69,15 @@ var svg = d3.select("#caasppchart").append("svg")
       .attr("width", x.rangeBand())
       .attr("height", function(d) { return y0.rangeBand() - y1(+d.Value); });
 
+// tooltip
+
+  var rect = group.selectAll("rect");
+      
+      rect
+        .on("mouseover", mouseoverFunc)
+        .on("mousemove", mousemoveFunc)
+        .on("mouseout", mouseoutFunc);
+
   group.filter(function(d, i) { return !i; }).append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + y0.rangeBand() + ")")
@@ -89,6 +102,28 @@ var svg = d3.select("#caasppchart").append("svg")
         g = t.selectAll(".group").attr("transform", "translate(0," + y0(y0.domain()[0]) + ")");
     g.selectAll("rect").attr("y", function(d) { return y1(+d.Value + d.valueOffset); });
     g.select(".group-label").attr("y", function(d) { return y1(+d.values[0].Value / 2 + d.values[0].valueOffset); })
+  }
+
+  //btooltip
+
+  function mouseoverFunc(d) {
+
+  btooltip
+    .style("display", null) // this removes the display none setting from it
+    .html("<p>Total: " + d.Value + "</p>");
+  }
+
+
+function mouseoutFunc(d) {
+  btooltip
+  .style("display", "none");  // this sets it to invisible!
+}
+
+
+function mousemoveFunc(d) {
+  btooltip
+    .style("top", (d3.event.pageY - 10) + "px" )
+    .style("left", (d3.event.pageX + 10) + "px");
   }
 
 } // end barchart

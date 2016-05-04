@@ -17,17 +17,17 @@
   </head>
 
   <!-- <div class="row col-sm-8 col-sm-offset-2 main"> -->
+<div class="container">
+
+
 
         <h1>The Golden State Schooling Blues.</h1>
 
     <div id="page_header">
        
-        <h3>Are California Schools Really Behind?</h3>
+        <h3>Are California Schools Really Behind?</h3></div>
 
         <p>Each year 4th and 8th graders take the National Assessment of Educational Progress, or NAEP. The NAEP is ongoing assessment of what U.S. students know and can do in different subjects. California’s children tend to score relatively poorly on these tests.</p>
-    </div>
-
-    </div>
 
 <div class="row">
     <div class="col-md-2">
@@ -35,6 +35,7 @@
     </div>
     <div class="col-md-3">
         <p>The differences between California's children and children elsewhere in the ocuntry are statistically significant. Research has shown that children not reading at grade level by the end of third grade are at serious risk of never graduating from high school.</p>
+        <div id="table"></div>
     </div>
      <div class="col-md-4">
         <div id="country-line"></div>
@@ -68,7 +69,7 @@
     </div>
      <div class="col-md-4">
         <div>
-            <button id="mathbutton">Math<button id="readingbutton">Reading</div>
+            <button id="mathbutton">Math</button><button id="readingbutton">Reading</button>
         </div>
          <div id="caasppchart"> 
             <label><input id="math" type="radio" name="mode" value="multiples" checked> Multiples</label>
@@ -78,7 +79,6 @@
           <label><input id="reading" type="radio" name="mode" value="stacked"> Stacked</label>
           </div>
     </div>
-   
   </div>
         
 <div class="row">
@@ -90,11 +90,17 @@
         
         <p>Each student arrives at school with different challenges, advantages, resources, and distractions. A fundamental challenge of public education is to create conditions that maximize learning for each child, each year, regardless of where they start. California has the largest and most diverse student population in America. 
         </p>
-        <div class="title"><h4>Half of California students are Hispanic</h4></div>
+        <h4>Half of California students are Hispanic</h4>
 
         <p>About half of California’s students are Latino. In about 30 years, the state’s K-12 schools added about 3 million Latino students, accounting for virtually all of the growth in California enrollment. Non-Latino white students make up about a quarter of the state student body. Most of the remaining students are Asian (9%), African-American (6%), or Filipino (3%). About 3% of California students associate themselves with none of the above. California’s large urban districts educate students from virtually every culture and linguistic background on the planet.</p>
     </div>
      <div class="col-md-4">
+        picture
+    </div>
+</div>
+  
+<div class="row">
+    <div class="col-md-12">
         <div id="enrollment"></div>  
     </div>
     
@@ -114,9 +120,9 @@
     </div>
     
   </div>
-
-
-    </div><!-- ./wrapper -->
+</div>
+</div>
+    <!-- ./wrapper -->
 
     <!-- Bootstrap 3.3.5 -->
     <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
@@ -131,6 +137,8 @@
     <script src="js/chroniton-only.js"></script>
     <script src="https://d3js.org/topojson.v1.min.js">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.9.0/d3-legend.js"></script>
+    <script src="js/stupidtable.js"></script>
+    <script src="js/caltable.js"></script>
     <script src="js/enrollment.js"></script>
     <script src="js/mathbarchart.js"></script>
     <script src="js/maps.js"></script>
@@ -145,18 +153,20 @@ queue()
     .defer(d3.csv, "data/NAEP-LINE-AVG.csv")
     .defer(d3.csv, "data/CAASPP-READING.csv")
     .defer(d3.csv, "data/ENROLLMENT-Normalized.csv")
+    .defer(d3.csv, "data/CAL-RACE-NAEP-AVG.csv")
     .await(ready);
        
 
-function ready(error, states, cities, mathtest, linedata, reading, enrolldata) {
+function ready(error, states, cities, mathtest, linedata, reading, enrolldata, caldata) {
 
     if (error) { console.log(error); }
 
     //readingbarchart(data);
+    caltable(caldata);
     enrollmentsmall(enrolldata);
-    mathbarchart(mathtest);
     readingbarchart(reading);
     linechart(linedata);
+    mathbarchart(mathtest);
     makeMaps(states, cities);
 
 }
