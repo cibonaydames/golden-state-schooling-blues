@@ -249,7 +249,8 @@ var svg = d3.select("#readingchart").append("svg")
     var t = svg.transition().duration(750),
         g = t.selectAll(".group").attr("transform", function(d) { return "translate(0," + y0(d.key) + ")"; });
     g.selectAll("rect").attr("y", function(d) { return y1(+d.Value); });
-    g.select(".group-label").attr("y", function(d) { return y1(+d.values[0].Value / 2); })
+    g.select(".group-label")
+    .attr("y", function(d) { return y1(+d.values[0].Value / 2); })
   }
 
   function transitionStacked() {
@@ -286,8 +287,8 @@ d3.select("div#readingchart").style("display", "none");
 d3.select("div#caasppchart").style("display", "inline");
 
 d3.select("button#readingbutton").on("click", function() {
+  d3.select("div#caasppchart").style("display", "none");
 	d3.select("div#readingchart").style("display", "inline");
-	d3.select("div#caasppchart").style("display", "none");
 
 	// style button so it looks selected! d3.select(this)
 
