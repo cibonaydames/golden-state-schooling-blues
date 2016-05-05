@@ -445,7 +445,7 @@ nav#footer p{
 
 /* LINE CHART */
 circle {
-    fill: #41B6C4;
+    fill: #1d91c0;
 }
 
 circle:hover {
@@ -463,7 +463,7 @@ circle:hover {
 
 .line {
     fill: none;
-    stroke: #41B6C4;
+    stroke: #1d91c0;
     stroke-width: 1.5px;
     stroke-opacity: 80%;
 }
