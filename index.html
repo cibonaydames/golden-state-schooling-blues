@@ -1,134 +1,328 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="x-ua-compatible" content="IE=9" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>The Golden State Schooling Blues</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- Custom -->
-    <link rel="stylesheet" href="css/styles.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">   
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css"  href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome/css/font-awesome.css">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" type="text/css"  href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,700,300,600,800,400' rel='stylesheet' type='text/css'>
+
+    <script type="text/javascript" src="js/modernizr.custom.js"></script>
+
   </head>
-
-  <!-- <div class="row col-sm-8 col-sm-offset-2 main"> -->
-<div class="container">
-
-
-
-        <h1>The Golden State Schooling Blues.</h1>
-
-    <div id="page_header">
-       
-        <h3>Are California Schools Really Behind?</h3></div>
-
-        <p>Each year 4th and 8th graders take the National Assessment of Educational Progress, or NAEP. The NAEP is ongoing assessment of what U.S. students know and can do in different subjects. California’s children tend to score relatively poorly on these tests.</p>
-
-<div class="row">
-    <div class="col-md-2">
-        <p>Insert fun fact here</p>
-    </div>
-    <div class="col-md-3">
-        <p>The differences between California's children and children elsewhere in the ocuntry are statistically significant. Research has shown that children not reading at grade level by the end of third grade are at serious risk of never graduating from high school.</p>
-        <div id="table"></div>
-    </div>
-     <div class="col-md-4">
-        <div id="country-line"></div>
-    </div>
-    
-  </div>
-
-<div class="row">
-     <div class="col-md-2">
-        <p>Insert fun fact here</p>
-    </div>
-    <div class="col-md-3">
-        <p>California’s children in poverty generally score behind those in other states, as do California’s Latino students. on average, about a third of California’s students do not finish high school. </p>
-        <p>Students that “drop out” are not random – they are disproportionately African American and Latino, and they disproportionately come from low-income families.</p>
-    </div>
-     <div class="col-md-4">
-        <div id="map2013"></div>
-    </div>
-  </div>
-
-<div class="row">
-     <div class="col-md-2">
-        <p>Insert fun fact here</p>
-    </div>
-    <div class="col-md-3">
-        <div class="title"><h3>Achievement Gaps: The Biggest Challenge</h3></div>
-          
-            <p>Students who qualify for free or reduced-price lunch service (a common measure of poverty) tend to score lower than the kids who don’t. Race correlates, too: black and Latino students tend to score lower on standardized tests than white and Asian students.
-        </p>
-        <p>Students from low-income families, English learners, and African Americans continue to have lower average scores. </p>
-    </div>
-     <div class="col-md-4">
-        <div>
-            <button id="mathbutton">Math</button><button id="readingbutton">Reading</button>
+  <body>
+    <!-- Navigation -->
+    <nav id="tf-menu" class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html"></a>
         </div>
-         <div id="caasppchart"> 
-            <label><input id="math" type="radio" name="mode" value="multiples" checked> Multiples</label>
-          <label><input id="math" type="radio" name="mode" value="stacked"> Stacked</label></div>
-         <div id="readingchart"> 
-            <label><input id="reading" type="radio" name="mode" value="multiples" checked> Multiples</label>
-          <label><input id="reading" type="radio" name="mode" value="stacked"> Stacked</label>
-          </div>
-    </div>
-  </div>
-        
-<div class="row">
-    <div class="col-md-2">
-        <p>Insert fun fact here</p>
-    </div>
-    <div class="col-md-3">
-        <h3>Diversity</h3>
-        
-        <p>Each student arrives at school with different challenges, advantages, resources, and distractions. A fundamental challenge of public education is to create conditions that maximize learning for each child, each year, regardless of where they start. California has the largest and most diverse student population in America. 
-        </p>
-        <h4>Half of California students are Hispanic</h4>
 
-        <p>About half of California’s students are Latino. In about 30 years, the state’s K-12 schools added about 3 million Latino students, accounting for virtually all of the growth in California enrollment. Non-Latino white students make up about a quarter of the state student body. Most of the remaining students are Asian (9%), African-American (6%), or Filipino (3%). About 3% of California students associate themselves with none of the above. California’s large urban districts educate students from virtually every culture and linguistic background on the planet.</p>
-    </div>
-     <div class="col-md-4">
-        picture
-    </div>
-</div>
-  
-<div class="row">
-    <div class="col-md-12">
-        <div id="enrollment"></div>  
-    </div>
-    
-  </div>
-    
-<div class="row">
-    <div class="col-md-2">
-        <p>Insert fun fact here</p>
-    </div>
-    <div class="col-md-3">
-        <h3>Life After High School</h3>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#tf-home" class="page-scroll">Home</a></li>
+            <li><a href="#tf-context" class="page-scroll">Context</a></li>
+            <li><a href="#tf-poverty" class="page-scroll">Poverty</a></li>
+            <li><a href="#tf-achievement" class="page-scroll">Achievement Gaps</a></li>
+            <li><a href="#tf-enrollmentsec" class="page-scroll">Enrollment</a></li>
+            <li><a href="#tf-conclusion" class="page-scroll">Graduation</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
 
-        <p>California has a long and well-respected history of providing its residents with affordable, lifelong access to postsecondary education. The largest and most visible investment has been a robust public system of colleges and universities.  With recent budget cuts, California’s road to and through college has become pocked with potholes. Whether by strategy or by circumstance, California’s education systems are overdue for some rethinking to allow its residence to enjoy postsecondary education.</p>
+    <!-- Home -->
+    <div id="tf-home" class="text-center">
+        <div class="overlay">
+            <div class="content">
+                <span style="font-family: Permanent Marker, cursive"><h1>The <strong><span style="color:#FFD700">Golden State</span></strong> Schooling <strong><span style="color:#1d91c0">Blues</span></strong></h1></span>
+                <p class="lead">Are California Schools <strong>Really</strong>  Behind?</p>
+                <a href="#tf-about" class="fa fa-angle-down page-scroll"></a>
+            </div>
+        </div>
     </div>
-     <div class="col-md-4">
-        <div id="enrollment"></div>  
-    </div>
-    
-  </div>
-</div>
-</div>
-    <!-- ./wrapper -->
 
-    <!-- Bootstrap 3.3.5 -->
-    <script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-    <script src="js/bootstrap.min.js"></script>
-     <!-- D3 Scripts -->
+    <!-- Context -->
+    <div id="tf-context">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="context-text">
+                        <div class="section-title">
+                            <h4>Context</h4>
+                            <h2>How does <br><strong>California</strong> compare?</h2>
+                            <hr>
+                            <div class="clearfix"></div>
+                        </div>
+                        <p class="intro">Each year 4th and 8th graders take the National Assessment of Educational Progress, or NAEP. The NAEP is ongoing assessment of what U.S. students know and what they can do in different subjects. It allows people to compare student achievement between states, grades and subgroups. <strong>California’s children tend to score relatively poorly on these tests.</strong></p>
+                        <br>
+                        <p>The differences between California's children and children elsewhere in the country are statistically significant. Research has shown that children not reading at grade level by the end of third grade are at serious risk of <strong>never graduating</strong> from high school.</p>
+                        <p>The chart shows the average score of children in each state. A score of <strong>229</strong> is needed to reach the level of proficiency. Although California's scores have increased over the past ten years, they are still <strong>below</strong> proficiency level.</p>  
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div id="country-line"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Poverty -->
+    <div id="tf-poverty" class="text-center">
+        <div class="overlay">
+            <div class="container">
+                <div class="section-title center">
+                    <h2><strong>Child Poverty</strong></h2>
+                    <div class="line">
+                        <hr>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="img-responsive" id="map2013"></div>
+                </div>
+                <div class="col-md-4">
+                        <p class="intro">Poverty is an issue that more and more of our nation's children are coming face to face with. <strong>Poverty correlates strongly with academic results.</strong> California’s children in poverty generally score behind those in other states, as do California’s Latino students. On average, about a third of California’s students do not finish high school. </p>
+                        <br>
+                        <p>Students that “drop out” are not random – they are disproportionately <strong>African American</strong> and <strong>Latino</strong>, and they disproportionately come from <strong>low-income families</strong>.</p>
+                        <p>Factors related to poverty that may place a child at-risk for academic failure are:</p>
+                        <ul class="poverty-list">
+                            <li>
+                                <span class="fa fa-dot-circle-o"></span>
+                                <em>very young, single or low educational level parents</em>
+                            </li>
+                            <li>
+                                <span class="fa fa-dot-circle-o"></span>
+                                <em>homelessness, abuse and neglect</em>
+                            </li>
+                            <li>
+                                <span class="fa fa-dot-circle-o"></span>
+                                <em>exposure to inadequate educational experiences</em>
+                            </li>  
+                        </ul>  
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Achievement Gap -->
+    <div id="tf-achievement" class="text-center">
+        <div class="container">
+            <div class="section-title center">
+                <h2><strong>Achievement Gaps:</strong> The Biggest Challenge</h2>
+                <div class="line">
+                    <hr>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="space"></div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="text-left">
+                        <div class="section-title">
+                            <h4>Achievement Gaps</h4>
+                            <h2>What Achievement Gaps affect<br><strong>California</strong>?</h2>
+                            <hr>
+                            <div class="clearfix"></div>
+                        </div>
+                        <p class="intro">There are multiple achievement gaps that affect California. In addition to the high and low-income widened student gap, the Hispanic-White gap has a major impact on the state’s educational outcomes. The gap between English-learners and non-English-learners has grown to be California’s widest achievement gap.</p>
+                        <br>
+                        <p>Students from <strong><span style="color:#c7e9b4">Low Income</span></strong> families, that are <strong><span style="color:#7fcdbb">English Learners</span></strong>, <strong><span style="color:#41b6c4">Hispanic</span></strong> and <strong><span style="color:#1d91c0">African Americans</span></strong> continue to have lower average scores on The California Assessment of Student Performance and Progress (CAASPP). Poor, unequal student achievement results in a less educated society and a less productive workforce.</p>  
+                </div>
+            </div>
+                <div class="col-md-8">
+                    <div>
+                        <button id="mathbutton" class="btn tf-btn btn-default">Math</button> 
+                        <button id="readingbutton" class="btn tf-btn btn-default">Reading</button>
+                    </div>
+                    <br>
+                    <br>
+                     <div id="caasppchart"> 
+                        <label><input id="math" type="radio" name="mode" value="multiples" checked> Multiples</label>
+                        <label><input id="math" type="radio" name="mode" value="stacked"> Stacked</label></div>
+                    <div id="readingchart"> 
+                        <label><input id="reading" type="radio" name="mode" value="multiples" checked> Multiples</label>
+                        <label><input id="reading" type="radio" name="mode" value="stacked"> Stacked</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enrollment-->
+    <div id="tf-enrollmentsec" class="text-center">
+        <div class="overlay">
+            <div class="container">
+                <div class="section-title center">
+                    <h2><strong>Student Enrollment</strong> by County</h2>
+                    <div class="line">
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="intro">Each student arrives at school with different challenges, advantages, resources, and distractions. A fundamental challenge of public education is to create conditions that maximize learning for each child, each year, regardless of where they start. <strong>California has the largest and most diverse student population in America.</strong></p>
+                        <br>
+                        <p>About half of California’s students are <strong><span style="color:#7fcdbb">Hispanic</span></strong>. In about 30 years, the state’s K-12 schools added about 3 million Hispanic students, accounting for virtually all of the growth in California enrollment. <strong><span style="color:#c7e9b4">White</span></strong> students make up about a quarter of the state student body. Most of the remaining students are <strong><span style="color:#41b6c4">Asian</span></strong> (9%), <strong><span style="color:#1d91c0">African-American</span></strong> (6%), or <strong><span style="color:#225ea8">Native American</span></strong> (3%). About 3% of California students associate themselves with none of the above. California’s large urban districts educate students from virtually every culture and linguistic background on the planet.</p>
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-md-12">
+                    <div class="space"></div>
+                    <div class="img-responsive" id="enrollment"></div>  
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Conclusion -->
+    <div id="tf-conclusion">
+        <div class="container"> <!-- Container -->
+            <div class="section-title text-center center">
+                <h2><strong>Graduation</strong></h2>
+                <div class="line">
+                    <hr>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="space"></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="text-left">
+                        <div class="section-title">
+                            <h4>Life after</h4>
+                            <h2>High School</h2>
+                            <hr>
+                            <div class="clearfix"></div>
+                        </div>
+                            <p class="intro">Even those students who finish high school ready for college do not necessarily go to college, and the school system is not necessarily set up to encourage them to do so. A student’s interest in college may not translate into action without support. Virtually all California high schools long ago reduced the number of college counselors on their staffs. Even still it is easy to predict which students will earn a degree and which will not. <strong>Only 46% of black students and 53% of Hispanic students graduated within six years, compared with 66% of white students.</strong></p>
+                            <br>
+                            <br>
+                            <p><strong>For every 100 9th graders in California:</strong></p>
+                            <ul class="sources-list">
+                                <li>
+                                    <span class="fa fa-angle-right"></span>
+                                    <strong><span style="color:#c7e9b4">74.2</span></strong> Graduate High School on time
+                                </li>
+                                <li>
+                                    <span class="fa fa-angle-right"></span>
+                                    <strong><span style="color:#7fcdbb">45.8</span></strong> Start College by the age of 24
+                                </li>
+                                <li>
+                                    <span class="fa fa-angle-right"></span>
+                                    <strong><span style="color:#41b6c4">30.4</span></strong> Stay enrolled a year later
+                                </li>
+                                <li>
+                                    <span class="fa fa-angle-right"></span>
+                                    <strong><span style="color:#1d91c0">22.4</span></strong> Earn a degree within 6 years
+                                </li>
+                                <li>
+                                    <span class="fa fa-angle-right"></span>
+                                    <strong><span style="color:#225ea8">12.2</span></strong> Earn a 4-year degree
+                                </li>                            
+                            </ul>
+                            <br>
+                            <br>
+                            <p>California has a long and well-respected history of providing its residents with affordable, lifelong access to postsecondary education. The largest and most visible investment has been a robust public system of colleges and universities. With recent budget cuts, California’s road to and through college has become pocketed with potholes. Whether by strategy or by circumstance, California’s education systems are overdue for some rethinking to allow its residence to enjoy postsecondary education.</p>  
+                     </div>
+            </div>
+                <div class="col-md-6">
+                    <img src="img/02.png" class="img-responsive">
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sources -->
+    <div id="tf-sources" class="text-center">
+        <div class="overlay">
+            <div class="container">
+                <div class="section-title center">
+                    <h4>Sources</h4>
+                    <div class="line">
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-md-offset-2">
+                        <ul class="sources-list">
+                            <li>
+                                <span class="fa fa-angle-right"></span>
+                                <a href="https://www.census.gov/content/dam/Census/library/publications/2014/demo/p60-251.pdf">https://www.census.gov/content/dam/Census/library/publications/2014/demo/p60-251.pdf</a>
+                            </li>
+                            <li>
+                                <span class="fa fa-angle-right"></span>
+                                <a href="http://ed100.org/">http://ed100.org/</a>
+                            </li>
+                            <li>
+                                <span class="fa fa-angle-right"></span>
+                                <a href="https://www.flickr.com/photos/thomasleuthard/6005997624">https://www.flickr.com/photos/thomasleuthard/6005997624</a>
+                            </li>
+                            <li>
+                                <span class="fa fa-angle-right"></span>
+                                <a href="http://www.teach-nology.com/tutorials/teaching/poverty/">http://www.teach-nology.com/tutorials/teaching/poverty/</a>
+                            </li>
+                            <li>
+                                <span class="fa fa-angle-right"></span>
+                                <a href="http://nces.ed.gov/ccd/elsi/">http://nces.ed.gov/ccd/elsi/</a>
+                            </li>
+                            <li>
+                                <span class="fa fa-angle-right"></span>
+                                <a href="https://www.pexels.com/photo/bucket-of-multi-colored-chalk-6257/">https://www.pexels.com/photo/bucket-of-multi-colored-chalk-6257/</a>
+                            </li>
+                            <li>
+                                <span class="fa fa-angle-right"></span>
+                                <a href="http://www.povertyusa.org/the-state-of-poverty/">http://www.povertyusa.org/the-state-of-poverty/</a>
+                            </li>
+                            <li>
+                                <span class="fa fa-angle-right"></span>
+                                <a href="https://static.pexels.com/photos/451/red-school-blur-factory.jpg">https://static.pexels.com/photos/451/red-school-blur-factory.jpg</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav id="footer">
+        <div class="container">
+            <div class="pull-left fnav">
+                <p>ALL RIGHTS RESERVED. COPYRIGHT © 2016. Data Driven Story Created by <a href="https://cibonaydames.com">Cibonay Dames</a>.</p>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.1.11.1.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/SmoothScroll.js"></script>
+    <script type="text/javascript" src="js/jquery.isotope.js"></script>
+
+    <!-- Javascript and D3 -->
+    <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="https://d3js.org/d3.v3.min.js"></script>
@@ -145,34 +339,30 @@
     <script src="js/linechart.js"></script>
     <script type="text/javascript">
 
+    queue()
+        .defer(d3.json, "data/geojson/us-states.json")
+        .defer(d3.csv, "data/POVERTY.csv")
+        .defer(d3.csv, "data/CAASPP-MATH.csv")
+        .defer(d3.csv, "data/NAEP-LINE-AVG.csv")
+        .defer(d3.csv, "data/CAASPP-READING.csv")
+        .defer(d3.csv, "data/ENROLLMENT-Normalized.csv")
+        .defer(d3.csv, "data/CAL-RACE-NAEP-AVG.csv")
+        .await(ready);
+           
+    function ready(error, states, cities, mathtest, linedata, reading, enrolldata, caldata) {
 
-queue()
-    .defer(d3.json, "data/geojson/us-states.json")
-    .defer(d3.csv, "data/CaliforniaData.csv")
-    .defer(d3.csv, "data/CAASPP-MATH.csv")
-    .defer(d3.csv, "data/NAEP-LINE-AVG.csv")
-    .defer(d3.csv, "data/CAASPP-READING.csv")
-    .defer(d3.csv, "data/ENROLLMENT-Normalized.csv")
-    .defer(d3.csv, "data/CAL-RACE-NAEP-AVG.csv")
-    .await(ready);
-       
+        if (error) { console.log(error); }
 
-function ready(error, states, cities, mathtest, linedata, reading, enrolldata, caldata) {
+        //readingbarchart(data);
+        caltable(caldata);
+        enrollmentsmall(enrolldata);
+        readingbarchart(reading);
+        linechart(linedata);
+        mathbarchart(mathtest);
+        makeMaps(states, cities);
+    }
 
-    if (error) { console.log(error); }
+    </script>
 
-    //readingbarchart(data);
-    caltable(caldata);
-    enrollmentsmall(enrolldata);
-    readingbarchart(reading);
-    linechart(linedata);
-    mathbarchart(mathtest);
-    makeMaps(states, cities);
-
-}
-
-
-
-</script>
-</body>
+  </body>
 </html>

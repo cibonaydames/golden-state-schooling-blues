@@ -7,8 +7,8 @@ d3.selection.prototype.moveToFront = function() {
 function linechart(data) {
 
 
- 	        var fullwidth = 700;
-            var fullheight = 400;
+ 	        var fullwidth = 780;
+            var fullheight = 500;
             var margin = { top: 20, right: 100, bottom: 50, left: 100};
 
 
@@ -34,12 +34,14 @@ function linechart(data) {
                             .tickFormat(function(d) {
                                 return dateFormat(d);
                             })
-                            .innerTickSize([5]);
+                            .outerTickSize(3)
+                            .innerTickSize(2);
 
             var yAxis = d3.svg.axis()
                             .scale(yScale)
                             .orient("left")
-                            .innerTickSize([0]);
+                            .outerTickSize(3)
+                            .innerTickSize(2);
 
 
         // add a tooltip to the page - not to the svg itself!
@@ -169,7 +171,9 @@ function linechart(data) {
                     .attr("x", xScale(dateFormat.parse("2013")))
                     .attr("class", "line-text")
                     .attr("dy", "-2")
-                    .attr("dx", "5");
+                    .attr("dx", "5")
+                    .style("font-size", "16px")
+                    .style("fill", "#081D58");
 
                 
             groups.transition()
@@ -190,7 +194,7 @@ function linechart(data) {
                         return yScale(+d.amount);
                     })
                     .attr("r", 3)
-                    .style("opacity", .1); // this is optional - if you want visible dots or not!
+                    .style("opacity", .125); // this is optional - if you want visible dots or not!
 
                 circles
                     .on("mouseover", mouseoverFunc)
@@ -201,10 +205,14 @@ function linechart(data) {
                 svg.append("g")
                     .attr("class", "x axis")
                     .attr("transform", "translate(0," + height + ")")
+                    .style("font-size", "12px")
+                    .style("fill", "#081D58")
                     .call(xAxis);
 
                 svg.append("g")
                     .attr("class", "y axis")
+                    .style("font-size", "12px")
+                    .style("fill", "#081D58")
                     .call(yAxis);
                 
                 svg.append("text")
@@ -212,6 +220,9 @@ function linechart(data) {
                     .attr("transform", "translate(" + width/2 + " ," +
                         height + ")")
                     .style("text-anchor", "middle")
+                    .style("font-size", "18px")
+                    .style("fill", "#081D58")
+                    .attr("y", "15")
                     .attr("dy", "35")
                     .text("Year");
 
@@ -219,10 +230,12 @@ function linechart(data) {
                    .attr("class", 'ylabel')
                    .attr("text-anchor", "middle")
                    .attr("transform", "rotate(-90)")
-                   .attr("x", -width/2)
+                   .style("font-size", "18px")
+                   .style("fill", "#081D58")
+                   .attr("x", -width/2.5)
                    .attr("y", "0")
                    .attr("dy", "-50")  // change this amount till it works for you
-                   .text("NAEP Score"); // label string here        
+                   .text("Average NAEP Score"); // label string here        
                
 
                 function mouseoverFunc(d) {
@@ -236,9 +249,9 @@ function linechart(data) {
                         .attr("r", 4);
                     linetooltip
                         .style("display", null) // this removes the display none setting from it
-                        .html("<p>State: " + d.state +
-                                    "<br>Year: " + d.year +
-                                  "<br>NAEP Score: " +d.amount + " </p>");
+                        .html("<p><b>State:</b> " + d.state +
+                                    "<br><b>Year:</b> " + d.year +
+                                  "<br><b>NAEP Score:</b> " +d.amount + " </p>");
                     }
 
 
@@ -250,6 +263,7 @@ function linechart(data) {
                         .transition()
                         .style("opacity", .1)
                         .attr("r", 3);
+
                 linetooltip.style("display", "none");  // this sets it to invisible!
               }
 

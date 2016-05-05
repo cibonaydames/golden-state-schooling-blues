@@ -1,16 +1,13 @@
-
-//Width and height of map
-
 function makeMaps(json, states) {
 
 
-    var width = 800;
+    var width = 750;
     var height = 400;
 
     // D3 Projection
     var projection = d3.geo.albersUsa()
                        .translate([width/2, height/2])    // translate to center of screen
-                       .scale([800]);          // scale things down so see entire US
+                       .scale([750]);          // scale things down so see entire US
 
     // Define path generator
     var path = d3.geo.path()               // path generator that will convert GeoJSON to SVG paths
@@ -29,7 +26,7 @@ function makeMaps(json, states) {
     // Append Div for tooltip to SVG
     var tooltip1 = d3.select("body")
                 .append("div")
-                .attr("class", "tool-tip")
+                .attr("class", "m-tool-tip")
                 .style("display", "none");
 
 
@@ -47,7 +44,7 @@ function makeMap1(json, states) {
 
     // Define linear scale for output
     var map1Color = d3.scale.linear()
-              .range(["lightgreen", "green"]);
+              .range(["#41b6c4", "#253494"]);
 
 
   /*  var color = d3.scale.linear()
@@ -99,7 +96,7 @@ function makeMap1(json, states) {
             tooltip1.transition()
                .duration(200)
                .style("display", null);
-            tooltip1.html("" + d.properties.name + "'s students average score is" + " " + d.properties.y2013 + ".")
+            tooltip1.html("" + d.properties.name + "'s child poverty rate is" + " " + d.properties.y2013 + "%")
                .style("left", (d3.event.pageX + 10) + "px")
                .style("top", (d3.event.pageY - 28) + "px");
         })
@@ -112,12 +109,12 @@ function makeMap1(json, states) {
 
     map1.append("g")
     .attr("class", "legendColors")
-        .attr("transform", "translate(700, 200)"); // where we put it on the page!
+    .attr("transform", "translate(610, 175)"); // where we put it on the page!
 
     var legendColors = d3.legend.color()
     .shapeWidth(20)
-    .title("Average NAEP Results")
-    .labelFormat(d3.format("1f"))
+    .title("Child Poverty Rate")
+    .labelFormat(d3.format("1f" + "%"))
     .scale(map1Color); // our existing color scale
 
     map1.select(".legendColors")

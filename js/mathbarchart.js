@@ -1,9 +1,18 @@
+var colorbrewer = {YlGnBu: {
+    3: ["#41b6c4","#1d91c0","#225ea8"],
+    4: ["#7fcdbb","#41b6c4","#1d91c0","#225ea8"],
+    5: ["#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8"],
+    6: ["#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8"],
+    7: ["#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494"],
+    8: ["#FFD700","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494"],
+    9: ["#FFD700","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"]
+    }};
+
 function mathbarchart(data) {
 
-
 var margin = {top: 10, right: 20, bottom: 20, left: 200},
-    width = 540 - margin.left - margin.right,
-    height = 320 - margin.top - margin.bottom;
+    width = 780 - margin.left - margin.right,
+    height = 450 - margin.top - margin.bottom;
 
 var y0 = d3.scale.ordinal()
     .rangeRoundBands([height, 0], .2);
@@ -28,11 +37,12 @@ var stack = d3.layout.stack()
     .y(function(d) { return +d.Value; })
     .out(function(d, y0) { d.valueOffset = y0; });
 
-var color = d3.scale.category10();
+var color = d3.scale.ordinal()
+    .range(colorbrewer.YlGnBu[7]);
 
 var btooltip = d3.select("body")
             .append("div")
-            .attr("class", "tool-tip");
+            .attr("class", "b-tool-tip");
 
 var svg = d3.select("#caasppchart").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -55,9 +65,12 @@ var svg = d3.select("#caasppchart").append("svg")
 
   group.append("text")
       .attr("class", "group-label")
-      .attr("x", -6)
+      .attr("x", -15)
       .attr("y", function(d) { return y1(+d.values[0].Value / 2); })
-      .attr("dy", ".35em")
+      .attr("dy", "3px")
+      .style("font-size", "12px")
+      .style("fill", "#081D58")
+      .style("text-anchor", "end")
       .text(function(d) { return d.key; });
 
   group.selectAll("rect")
@@ -80,7 +93,12 @@ var svg = d3.select("#caasppchart").append("svg")
 
   group.filter(function(d, i) { return !i; }).append("g")
       .attr("class", "x axis")
+      .attr("y", "35")
       .attr("transform", "translate(0," + y0.rangeBand() + ")")
+      .attr("dy", "10")
+      .style("font-size", "18px")
+      .style("fill", "#081D58")
+      .style("padding-top", "18px")
       .call(xAxis);
 
   d3.selectAll("input#math").on("change", change);
@@ -110,7 +128,7 @@ var svg = d3.select("#caasppchart").append("svg")
 
   btooltip
     .style("display", null) // this removes the display none setting from it
-    .html("<p>Total: " + d.Value + "</p>");
+    .html("<p>CAASPP Math Result for " + d.group + "'s is <b>" + d.Value + "</b></p>");
   }
 
 
@@ -132,8 +150,8 @@ function readingbarchart(data) {
 
 
 var margin = {top: 10, right: 20, bottom: 20, left: 200},
-    width = 540 - margin.left - margin.right,
-    height = 320 - margin.top - margin.bottom;
+    width = 780 - margin.left - margin.right,
+    height = 450 - margin.top - margin.bottom;
 
 var y0 = d3.scale.ordinal()
     .rangeRoundBands([height, 0], .2);
@@ -158,7 +176,12 @@ var stack = d3.layout.stack()
     .y(function(d) { return +d.Value; })
     .out(function(d, y0) { d.valueOffset = y0; });
 
-var color = d3.scale.category10();
+var color = d3.scale.ordinal()
+    .range(colorbrewer.YlGnBu[7]);
+
+var btooltip = d3.select("body")
+            .append("div")
+            .attr("class", "b-tool-tip");
 
 var svg = d3.select("#readingchart").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -181,9 +204,12 @@ var svg = d3.select("#readingchart").append("svg")
 
   group.append("text")
       .attr("class", "group-label")
-      .attr("x", -6)
+      .attr("x", -15)
       .attr("y", function(d) { return y1(+d.values[0].Value / 2); })
-      .attr("dy", ".35em")
+      .attr("dy", "3px")
+      .style("font-size", "12px")
+      .style("fill", "#081D58")
+      .style("text-anchor", "end")
       .text(function(d) { return d.key; });
 
   group.selectAll("rect")
@@ -195,9 +221,21 @@ var svg = d3.select("#readingchart").append("svg")
       .attr("width", x.rangeBand())
       .attr("height", function(d) { return y0.rangeBand() - y1(+d.Value); });
 
-  group.filter(function(d, i) { return !i; }).append("g")
+  // tooltip
+
+  var rect = group.selectAll("rect");
+      
+      rect
+        .on("mouseover", mouseoverFunc)
+        .on("mousemove", mousemoveFunc)
+        .on("mouseout", mouseoutFunc);
+
+   group.filter(function(d, i) { return !i; }).append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + y0.rangeBand() + ")")
+      .style("font-size", "18px")
+      .style("fill", "#081D58")
+      .style("padding-top", "18px")
       .call(xAxis);
 
   d3.selectAll("input#reading").on("change", change);
@@ -221,6 +259,27 @@ var svg = d3.select("#readingchart").append("svg")
     g.select(".group-label").attr("y", function(d) { return y1(+d.values[0].Value / 2 + d.values[0].valueOffset); })
   }
 
+  //btooltip
+
+  function mouseoverFunc(d) {
+
+  btooltip
+    .style("display", null) // this removes the display none setting from it
+    .html("<p>CAASPP Reading Result for " + d.group + "'s is <b>" + d.Value + "</b></p>");
+  }
+
+function mouseoutFunc(d) {
+  btooltip
+  .style("display", "none");  // this sets it to invisible!
+}
+
+
+function mousemoveFunc(d) {
+  btooltip
+    .style("top", (d3.event.pageY - 10) + "px" )
+    .style("left", (d3.event.pageX + 10) + "px");
+  }
+
 } // end barchart
 
 d3.select("div#readingchart").style("display", "none");
@@ -229,13 +288,22 @@ d3.select("div#caasppchart").style("display", "inline");
 d3.select("button#readingbutton").on("click", function() {
 	d3.select("div#readingchart").style("display", "inline");
 	d3.select("div#caasppchart").style("display", "none");
+
 	// style button so it looks selected! d3.select(this)
+
 });
+
 d3.select("button#mathbutton").on("click", function() {
 	d3.select("div#readingchart").style("display", "none");
 	d3.select("div#caasppchart").style("display", "inline");
 });
 	// same as above
+
+    
+
+          
+
+           
 
 
 

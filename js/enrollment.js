@@ -1,5 +1,15 @@
 function enrollmentsmall(data) {
 
+var colorbrewer = {YlGnBu: {
+    3: ["#41b6c4","#1d91c0","#225ea8"],
+    4: ["#7fcdbb","#41b6c4","#1d91c0","#225ea8"],
+    5: ["#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8"],
+    6: ["#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8"],
+    7: ["#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494"],
+    8: ["#FFD700","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494"],
+    9: ["#FFD700","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"]
+    }};
+
 var countries = [];
 
 var margin = {top: 30, right: 15, bottom: 20, left: 45},
@@ -9,7 +19,8 @@ var margin = {top: 30, right: 15, bottom: 20, left: 45},
 var parseDate = d3.time.format("%Y").parse;
 var outputDate = d3.time.format("%Y");
 
-var colorScale = d3.scale.category10();
+var colorScale = d3.scale.ordinal()
+    .range(colorbrewer.YlGnBu[5]);
 
 var x = d3.time.scale()
     .range([0, width]);
@@ -28,6 +39,8 @@ var yAxis = d3.svg.axis()
 var xAxis = d3.svg.axis()
     .scale(x)
     .orient("bottom")
+    .outerTickSize(3)
+    .innerTickSize(2)
     .ticks(5);
 
 var current = "Total";
@@ -128,10 +141,14 @@ var area = d3.svg.area()
 
     localsvg.append("g")
       .attr("class", "y axis")
+      .style("font-size", "9px")
+      .style("fill", "#FFFFFF")
       .call(yAxis);
     localsvg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
+      .style("font-size", "9px")
+      .style("fill", "#FFFFFF")
       .call(xAxis);
 
   } // end multiple
@@ -150,10 +167,12 @@ function mouseoverFunc(d) {
     .attr("r", 4);
   etooltip
     .style("display", null) // this removes the display none setting from it
-    .html("<p>Group: " + d.key +
-      "<br>NAEP Score: " +d.Enrollment + " </p>");
+    .html("<p>Group: " + d.key + " </p>");
   }
 
+/*.html("<p>Group: " + d.key +
+      "<br>NAEP Score: " +d.Enrollment + " </p>")
+*/
 
 function mouseoutFunc(d) {
   d3.selectAll("path.line").classed("unfocused", false).classed("focused", false);

@@ -1,29 +1,29 @@
 group,Field,Value
-All Students,exceeded,16
-All Students,met,28
-All Students,nearly_met,25
-All Students,not_met,31
-African American,exceeded,7
-African American,met,21
-African American,nearly_met,26
-African American,not_met,46
-Latino,exceeded,8
-Latino,met,24
-Latino,nearly_met,29
-Latino,not_met,39
-White,exceeded,26
-White,met,35
-White,nearly_met,22
-White,not_met,18
-Asian,exceeded,40
-Asian,met,32
-Asian,nearly_met,16
-Asian,not_met,12
-English Learner,exceeded,2
-English Learner,met,9
-English Learner,nearly_met,24
-English Learner,not_met,65
-Low Income,exceeded,8
-Low Income,met,23
-Low Income,nearly_met,28
-Low Income,not_met,41
+All Students,Exceeded,16
+All Students,Met,28
+All Students,Nearly Met,25
+All Students,Not Met,31
+Low Income,Exceeded,8
+Low Income,Met,23
+Low Income,Nearly Met,28
+Low Income,Not Met,41
+English Learner,Exceeded,2
+English Learner,Met,9
+English Learner,Nearly Met,24
+English Learner,Not Met,65
+Hispanic,Exceeded,8
+Hispanic,Met,24
+Hispanic,Nearly Met,29
+Hispanic,Not Met,39
+African American,Exceeded,7
+African American,Met,21
+African American,Nearly Met,26
+African American,Not Met,46
+White,Exceeded,26
+White,Met,35
+White,Nearly Met,22
+White,Not Met,18
+Asian,Exceeded,40
+Asian,Met,32
+Asian,Nearly Met,16
+Asian,Not Met,12
