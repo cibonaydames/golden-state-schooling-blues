@@ -501,6 +501,35 @@ circle:hover {
     stroke-width:3px; 
 }
 
+/*table*/
+
+table {
+	border-collapse: collapse;
+    padding: 8px;
+    border: 1px solid #081D58;
+}
+
+th, tr ,td{
+    padding: 8px;
+    text-align:center; 
+    border: 1px solid #081D58;
+}
+
+th {
+contentursor: pointer;
+background-color: #081D58;
+color: #FFFFFF;
+}
+
+td {
+	padding: 2px 10px;
+}	
+
+p.header {
+	font-size: 115%;
+	font-weight: bold;
+}
+
 /*Map*/
 .m-tool-tip {
     position: absolute;

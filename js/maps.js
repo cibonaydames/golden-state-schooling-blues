@@ -46,12 +46,6 @@ function makeMap1(json, states) {
     var map1Color = d3.scale.linear()
               .range(["#41b6c4", "#253494"]);
 
-
-  /*  var color = d3.scale.linear()
-    .domain([-1, 0, 1])
-    .range(["red", "white", "green"]);*/
-
-
     map1Color.domain(d3.extent(statesWithData,function(s) { return +s.y2013;})); // setting the range of the input data
 
     // Loop through each state data value in the .csv file
